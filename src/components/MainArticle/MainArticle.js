@@ -8,11 +8,8 @@ import moment from 'moment'
 //   // to get a value that is either negative, positive, or zero.
 //   return new Date(b.date) - new Date(a.date);
 // });
-
-
 export default function ArticleList() {
   const [articles, set_articles] = useState([]);
-
   useEffect(() => {
     async function doSomeDataFetching() {
       console.log("I'm gonna fetch some data!");
@@ -20,19 +17,15 @@ export default function ArticleList() {
       const res = await axios.get('http://newsapi.org/v2/top-headlines?' +
       'country=us&' +
       'apiKey=ba192a7497304eb795dcfc1aeb2669bc')
-
       http://newsapi.org/v2/top-headlines?country=us&apiKey=ba192a7497304eb795dcfc1aeb2669bc
       console.log("Got back:", res.data.articles);
       set_articles(res.data.articles)
     }
     doSomeDataFetching()
-    
   }, []);
-
   const deleteArticle = () => {
     set_articles([{}])
   }
-
   return (
     <div>
       <p>Here's a lovely list of articles, for your reading pleasure:</p>
