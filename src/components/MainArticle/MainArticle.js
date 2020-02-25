@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import ArticleCard from '../ArticleCard/ArticleCard.js'
 import axios from "axios"
 import moment from 'moment'
+// import CardDeck from 'react-bootstrap/CardDeck'
 
 // array.sort(function(a,b){
 //   // Turn your strings into dates, and then subtract them
@@ -23,28 +24,26 @@ export default function ArticleList() {
     }
     doSomeDataFetching()
   }, []);
-  const deleteArticle = () => {
-    set_articles([{}])
-  }
+
   return (
-    <div>
-      <p>Here's a lovely list of articles, for your reading pleasure:</p>
-      <button onClick={deleteArticle}>Clear notifications</button>
+    <div className="mb-4 ml-3 mr-3 row">
+      
       {articles.map((article, index) => {
         const dateFormat = moment(article.publishedAt).format("MMM Do YY")
         return(
-          <div>
-            <ArticleCard 
+          <div className="col-lg-4 d-flex align-items-stretch mb-4">
+            <ArticleCard
             key={index}
             title={article.title} 
             content={article.content} 
             link={article.url} 
             pic={article.urlToImage} 
             date={dateFormat} />
-          </div>         
+          </div> 
         )
       }
       )}
+      
     </div>
   );
 }
