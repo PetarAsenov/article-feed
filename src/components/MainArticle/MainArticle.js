@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import ArticleCard from '../ArticleCard/ArticleCard.js'
 import axios from "axios"
+import moment from 'moment'
 
 // array.sort(function(a,b){
 //   // Turn your strings into dates, and then subtract them
@@ -37,6 +38,7 @@ export default function ArticleList() {
       <p>Here's a lovely list of articles, for your reading pleasure:</p>
       <button onClick={deleteArticle}>Clear notifications</button>
       {articles.map((article, index) => {
+        const dateFormat = moment(article.publishedAt).format("MMM Do YY")
         return(
           <div>
             <ArticleCard 
@@ -45,7 +47,7 @@ export default function ArticleList() {
             content={article.content} 
             link={article.url} 
             pic={article.urlToImage} 
-            date={article.publishedAt} />
+            date={dateFormat} />
           </div>         
         )
       }
