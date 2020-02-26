@@ -1,8 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import Card from 'react-bootstrap/Card'
 
 
 export default function ArticleCard(props) {
+  const initLike = false;
+  const [like, set_like] = useState(initLike); // <- using state!
+  
+  const ifLike = () => {
+    set_like(!like);
+  };
+
   return (
   <Card>
     <Card.Img variant="top" src={props.pic} />
@@ -17,6 +24,12 @@ export default function ArticleCard(props) {
     </Card.Body>
     <Card.Footer>
       <small className="text-muted">{props.date}</small>
+      <div>
+      <p>
+        <button onClick={ifLike}>{like ? "Like" : "Unlike"}</button>
+      </p>
+      
+    </div>
     </Card.Footer>
   </Card>
   );
