@@ -3,12 +3,16 @@ import Card from 'react-bootstrap/Card'
 
 
 export default function ArticleCard(props) {
-  const initLike = false;
-  const [like, set_like] = useState(initLike); // <- using state!
-  
-  const ifLike = () => {
-    set_like(!like);
-  };
+
+  const changeLike = () => {
+
+      if(props.status === 'Like') {
+        props.ifLike(props.id, "Unlike")
+    } else if (props.status === 'Unlike') {
+        props.ifLike(props.id, "Like")
+    }
+
+  }
 
   return (
   <Card>
@@ -26,9 +30,8 @@ export default function ArticleCard(props) {
       <small className="text-muted">{props.date}</small>
       <div>
       <p>
-        <button onClick={ifLike}>{like ? "Like" : "Unlike"}</button>
+       <button onClick={changeLike}>{props.status}</button>
       </p>
-      
     </div>
     </Card.Footer>
   </Card>

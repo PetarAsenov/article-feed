@@ -10,7 +10,8 @@ import Form from 'react-bootstrap/Form';
 
 
 
-export default function Header() {
+export default function Header(props) {
+
   return (
     <div>
     <Navbar bg="light" expand='lg'>
