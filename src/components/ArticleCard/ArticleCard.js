@@ -1,17 +1,13 @@
-import React, {useState} from "react";
+import React from "react";
 import Card from 'react-bootstrap/Card'
 
 
 export default function ArticleCard(props) {
 
+  //Trigger function calling back to App.js to reset state with new status
   const changeLike = () => {
-
-      if(props.status === 'Like') {
-        props.ifLike(props.id, "Unlike")
-    } else if (props.status === 'Unlike') {
-        props.ifLike(props.id, "Like")
-    }
-
+    props.status === 'Like' ? props.ifLike(props.id, 'Unlike')
+                            : props.ifLike(props.id, "Like")                  
   }
 
   return (

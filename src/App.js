@@ -10,15 +10,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
 
   const [articles, set_articles] = useState([]);
+
+  // Fetch Data from API with key & set state with response.data
   useEffect(() => {
     async function doSomeDataFetching() {
-      console.log("I'm gonna fetch some data!");
-      // Getting back data from the net, through the wire, air, and the ocean:
       const res = await axios.get('http://newsapi.org/v2/top-headlines?' +
       'country=us&' +
       'apiKey=ba192a7497304eb795dcfc1aeb2669bc')
-      http://newsapi.org/v2/top-headlines?country=us&apiKey=ba192a7497304eb795dcfc1aeb2669bc
-      console.log("Got back:", res.data.articles);
       set_articles(res.data.articles)
     }
     doSomeDataFetching()
@@ -26,6 +24,8 @@ function App() {
 
   const ifLike = (id, status) => {
 
+  // Initialise a function that is triggered on click in the Article Card that
+  // overwites the status to == "Like" or "Unlike"
     const changedLike = articles.map((article, index) => {
       if(id === index) {
         article.status = status
@@ -35,6 +35,10 @@ function App() {
     set_articles(changedLike)
   }
 
+  //Return Mapped articles 1 by 1 into Article Card with placeholder status of
+  // "Like" until triggered to change 
+  //Cannot use props.key in article card so ID added
+  
   return (
     <div className="App">
       <Header ifLike={ifLike} />

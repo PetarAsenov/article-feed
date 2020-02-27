@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Logo from './logo.png'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -7,8 +7,6 @@ import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 // import Search from './search'
-
-
 
 export default function Header(props) {
 
