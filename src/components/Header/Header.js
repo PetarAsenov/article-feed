@@ -6,7 +6,6 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { NavLink } from "react-router-dom";
 
 export default function Header(props) {
 
@@ -16,22 +15,21 @@ const search = () => {
   props.search(searchText)
 }
 
-const filter = (subject) => {
-  props.filter(subject)
+const filter = () => {
+  props.filterLikes()
 }
 
   return (
     <div className='NavBar'>
     <Navbar bg="light" expand='lg'>
-     <Navbar.Brand href='#home'>
+     <Navbar.Brand href='/'>
       <img src={Logo} alt="logo" width="200px"/>
     </Navbar.Brand>
     <Navbar.Toggle aria-controls='basic-navbar-nav' />
     <Navbar.Collapse id='basic-navbar-nav'>
     <Nav className="mr-auto">
-      <Nav.Link href="#link">Your Liked Articles</Nav.Link>
-      <Nav.Link href="#link">Sport</Nav.Link>
-      {/* <Nav.Link onClick={filter, 'health'} filter='health'>Health</Nav.Link> */}
+      <Nav.Link href="#link" onClick={filter}>Your Liked Articles</Nav.Link>
+      {/* <Nav.Link href="#link" onClick={() => filter(sport)}>Sport</Nav.Link> */}
       <Nav.Link href="#link">Snipets</Nav.Link>
       <Nav.Link href="#link">Newsletter</Nav.Link>
       <Nav.Link href="#link">Guides</Nav.Link>
