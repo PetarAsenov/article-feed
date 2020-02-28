@@ -11,7 +11,7 @@ export default function ArticleCard(props) {
   }
 
   return (
-  <Card>
+  <Card className='Card'>
     <Card.Img variant="top" src={props.pic} />
     <Card.Body>
       <Card.Title>{props.title}</Card.Title>

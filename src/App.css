@@ -36,3 +36,31 @@
     transform: rotate(360deg);
   }
 }
+
+.headline {
+  margin-left: 2rem;
+}
+
+.NavBar {
+    position: fixed;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    z-index: 1;
+    border-bottom: black solid 1px;
+}
+
+.card {
+  text-align: center;
+}
+
+/* .articles {
+  margin-top: rem;
+} */
+
+.headline {
+  font-size: large;
+  margin-top: 7rem;
+  padding-bottom: 1rem;
+}
