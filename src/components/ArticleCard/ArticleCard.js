@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Card from 'react-bootstrap/Card'
 
 
@@ -8,6 +8,15 @@ export default function ArticleCard(props) {
   const changeLike = () => {
     props.status === 'Like' ? props.ifLike(props.id, 'Unlike')
                             : props.ifLike(props.id, "Like")                  
+  }
+
+  // Function to add comment
+
+  const [comment, set_comment] = useState([]);
+
+  const addNewComment = () => {
+    props.addcomment(comment, props.id)
+    set_comment("")
   }
 
   return (
@@ -23,10 +32,16 @@ export default function ArticleCard(props) {
       </Card.Text>
     </Card.Body>
     <Card.Footer>
+      <p>{props.comment}</p>
       <small className="text-muted">{props.date}</small>
       <div>
       <p>
        <button onClick={changeLike}>{props.status}</button>
+      </p>
+      <p className='commentbox'>
+        Add a comment:{" "}
+        <input value={comment} onChange={e => set_comment(e.target.value)} type="text" placeholder="Your Comment" />{" "}
+        <button onClick={addNewComment}>Add</button>
       </p>
     </div>
     </Card.Footer>

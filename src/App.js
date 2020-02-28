@@ -13,6 +13,8 @@ function App() {
   const [articles, set_articles] = useState([]);
   const [state, set_state] = useState('Top stories for today')
   const [likeArray, add_toLikes] = useState ([])
+  const commentArray=[]
+  const [comments, set_comments] = useState([])
 
   // Initial fetch Data from API with key & set state with response.data
   useEffect(() => {
@@ -20,7 +22,12 @@ function App() {
       const res = await axios.get('http://newsapi.org//v2/top-headlines?'+
       'country=us&' +
       'apiKey=ba192a7497304eb795dcfc1aeb2669bc')
-      set_articles(res.data.articles)
+      const new_arr =  res.data.articles.map( article => {
+        const articleWithComments = article
+        articleWithComments.comment = []
+        return articleWithComments
+      })
+      set_articles(new_arr)
     }
     doSomeDataFetching()
   }, []);
@@ -87,6 +94,15 @@ function removeDuplicates(myArr, prop) {
     set_articles(filterArr)
   }
 
+  const addComment = (comment, id) => {
+    const newComment = articles.map((article, index) => {
+      if(index === id) {
+        article.comment = [...article.comment , comment]
+      } return article
+    })
+      set_articles(newComment)
+  } 
+
   //Return Mapped articles 1 by 1 into Article Card with placeholder status of
   // "Like" until triggered to change 
   //Cannot use props.key in article card so ID added
@@ -117,7 +133,9 @@ function removeDuplicates(myArr, prop) {
             pic={article.urlToImage} 
             date={dateFormat}
             status={article.status || 'Like'}
-            ifLike={ifLike} 
+            ifLike={ifLike}
+            comment={article.comment}
+            addcomment={addComment}
             />
           </div> 
         )
