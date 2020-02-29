@@ -32,7 +32,9 @@ export default function ArticleCard(props) {
       </Card.Text>
     </Card.Body>
     <Card.Footer>
-      <p>{props.comment}</p>
+      {props.comment.map(comment => {
+        return <li>{comment}</li>
+      })}
       <small className="text-muted">{props.date}</small>
       <div>
       <p>

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Switch, Route } from "react-router-dom";
+// import { Switch, Route } from "react-router-dom";
 import './App.css';
 import Header from './components/Header/Header.js'
 import ArticleCard from './components/ArticleCard/ArticleCard.js'
@@ -12,9 +12,7 @@ function App() {
 
   const [articles, set_articles] = useState([]);
   const [state, set_state] = useState('Top stories for today')
-  const [likeArray, add_toLikes] = useState ([])
-  const commentArray=[]
-  const [comments, set_comments] = useState([])
+  const [likeArray] = useState ([])
 
   // Initial fetch Data from API with key & set state with response.data
   useEffect(() => {
@@ -32,10 +30,11 @@ function App() {
     doSomeDataFetching()
   }, []);
 
-  const ifLike = (id, status) => {
-
   // Initialise a function that is triggered on click in the Article Card that
   // overwites the status to == "Like" or "Unlike"
+
+  const ifLike = (id, status) => {
+
     const changedLike = articles.map((article, index) => {
       if(id === index) {
         article.status = status
@@ -76,6 +75,9 @@ function App() {
       set_articles(res.data.articles)
     }
   }
+
+
+//Filter function to show only users liked stories
 
 //Remove duplicate stories from Liked Array incase liked & unliked & liked again etc....
 
