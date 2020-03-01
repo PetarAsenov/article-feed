@@ -59,9 +59,8 @@ function App() {
         'country=us&' +
         'apiKey=ba192a7497304eb795dcfc1aeb2669bc')
           const new_arr =  res.data.articles.map( article => {
-          const articleWithComments = article
-          articleWithComments.comment = []
-          return articleWithComments
+          article.comment = []
+          return article
         })
         set_articles(new_arr)
     } 
@@ -71,10 +70,9 @@ function App() {
         `http://newsapi.org//v2/everything?`+
         `q=${searchword}&` +
         `apiKey=ba192a7497304eb795dcfc1aeb2669bc`)
-        const new_arr =  res.data.articles.map( article => {
-          const articleWithComments = article
-          articleWithComments.comment = []
-          return articleWithComments
+        const new_arr =  res.data.articles.map(article => {
+          article.comment = []
+          return article
         })
       new_arr.length === 0 ? 
                     set_state(`No stories based on search... '${searchword}'`)
